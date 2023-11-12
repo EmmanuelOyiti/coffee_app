@@ -17,7 +17,7 @@ class CoffeeTile extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.grey[200], borderRadius: BorderRadius.circular(12)),
       margin: const EdgeInsets.only(bottom: 10),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: ListTile(
         title: Text(coffee.name),
         subtitle: Text(coffee.price),

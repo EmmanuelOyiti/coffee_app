@@ -17,7 +17,7 @@ class _CartPageState extends State<CartPage> {
     Provider.of<CoffeeShop>(context, listen: false).removeFromCart(coffee);
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (context) => const AlertDialog(
         title: Text(
           " Removed from cart ",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -38,7 +38,7 @@ class _CartPageState extends State<CartPage> {
               child: Column(
                 children: [
                   //heading
-                  Text(
+                  const Text(
                     "Your cart",
                     style: TextStyle(fontSize: 20),
                   ),

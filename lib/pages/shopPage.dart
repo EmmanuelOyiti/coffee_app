@@ -19,7 +19,7 @@ class _ShopPageState extends State<ShopPage> {
     //alert user it has been added to cart
     showDialog(
       context: context,
-      builder: (context) => AlertDialog(
+      builder: (context) => const AlertDialog(
         title: Text(
           "Successfully added to cart",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -36,11 +36,11 @@ class _ShopPageState extends State<ShopPage> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
-              Text(
+              const Text(
                 "How do you like your coffee?",
                 style: TextStyle(fontSize: 20),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
 
@@ -55,7 +55,7 @@ class _ShopPageState extends State<ShopPage> {
                   return CoffeeTile(
                     coffee: eachCoffee,
                     onPressed: () => addToCart(eachCoffee),
-                    icon: Icon(Icons.add),
+                    icon: const Icon(Icons.add),
                   );
                 }),
               ))
