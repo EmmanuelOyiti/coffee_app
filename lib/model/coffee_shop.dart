@@ -5,9 +5,7 @@ class CoffeeShop extends ChangeNotifier {
   //coffee menu
   final List<Coffee> _shop = [
     Coffee(
-        name: "Madingo",
-        price: "5.2",
-        imagePath: "assets/images/Madingo.png"),
+        name: "Madingo", price: "5.2", imagePath: "assets/images/Madingo.png"),
     Coffee(
         name: "Castle Bridge",
         price: "5.2",
@@ -23,29 +21,25 @@ class CoffeeShop extends ChangeNotifier {
   //user cart
   final List<Coffee> _userCart = [];
 
+  final Map<Coffee, int> _cartQuantity = {};
+
   //get coffee list
   List<Coffee> get coffeeShop => _shop;
 
   //get user cart
   List<Coffee> get userCart => _userCart;
 
+  int getQuantityInCart(Coffee coffee) => _cartQuantity[coffee] ?? 0;
+
   //add item to cart
   void addItemToCart(Coffee coffee) {
-    Coffee? existingItem;
-    for (Coffee cartItem in _userCart) {
-      if (cartItem.name == coffee.name) {
-        // Item exists, update the quantity
-        existingItem = cartItem;
-        break;
-      }
-    }
-
-    if (existingItem != null) {
-      // Item is already in the cart, increase the quantity
-      existingItem.quantity++;
+    if (_cartQuantity.containsKey(coffee)) {
+      // If item is already in the cart, increment the quantity
+      _cartQuantity[coffee] = _cartQuantity[coffee]! + 1;
     } else {
-      // Item is not in the cart, add it
+      // If item is not in the cart, add it with quantity 1
       _userCart.add(coffee);
+      _cartQuantity[coffee] = 1;
     }
 
     // _userCart.add(coffee);
@@ -54,7 +48,17 @@ class CoffeeShop extends ChangeNotifier {
 
   //remove item from cart
   void removeFromCart(Coffee coffee) {
-    _userCart.remove(coffee);
-    notifyListeners();
+    if (_cartQuantity.containsKey(coffee)) {
+      // If item is in the cart, decrement the quantity
+      _cartQuantity[coffee] = _cartQuantity[coffee]! - 1;
+
+      // If the quantity becomes zero, remove the item from the cart
+      if (_cartQuantity[coffee] == 0) {
+        _userCart.remove(coffee);
+        _cartQuantity.remove(coffee);
+      }
+
+      notifyListeners();
+    }
   }
 }
