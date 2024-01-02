@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'coffee.dart';
+import 'package:collection/collection.dart';
 
 class CoffeeShop extends ChangeNotifier {
   //coffee menu
@@ -33,32 +34,34 @@ class CoffeeShop extends ChangeNotifier {
 
   //add item to cart
   void addItemToCart(Coffee coffee) {
-    if (_cartQuantity.containsKey(coffee)) {
-      // If item is already in the cart, increment the quantity
-      _cartQuantity[coffee] = _cartQuantity[coffee]! + 1;
-    } else {
-      // If item is not in the cart, add it with quantity 1
-      _userCart.add(coffee);
-      _cartQuantity[coffee] = 1;
-    }
+    Coffee? existingItem = _userCart.firstWhereOrNull((item) => item.name == coffee.name);
 
-    // _userCart.add(coffee);
-    notifyListeners();
+  if (existingItem != null) {
+    // Item is already in the cart, increase the quantity
+    existingItem.quantity++;
+  } else {
+    // Item is not in the cart, add it
+    _userCart.add(coffee);
   }
 
+  }
+   
+
+ 
   //remove item from cart
   void removeFromCart(Coffee coffee) {
-    if (_cartQuantity.containsKey(coffee)) {
-      // If item is in the cart, decrement the quantity
-      _cartQuantity[coffee] = _cartQuantity[coffee]! - 1;
+      Coffee? existingItem = _userCart.firstWhereOrNull((item) => item == coffee);
 
-      // If the quantity becomes zero, remove the item from the cart
-      if (_cartQuantity[coffee] == 0) {
-        _userCart.remove(coffee);
-        _cartQuantity.remove(coffee);
-      }
+  if (existingItem != null) {
+    // Item is in the cart, reduce the quantity
+    if (existingItem.quantity > 1) {
+      existingItem.quantity--;  // Decrease the quantity
+    } else {
+      // If the quantity is 1, remove the item from the cart
+      _userCart.remove(coffee);
+    }
 
-      notifyListeners();
+    notifyListeners();
     }
   }
 }
