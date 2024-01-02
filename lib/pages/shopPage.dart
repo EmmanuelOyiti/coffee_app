@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ShopPage extends StatefulWidget {
-  const ShopPage({super.key});
+  final CoffeeShop coffeeShop;
+
+  const ShopPage({Key? key, required this.coffeeShop}) : super(key: key);
 
   @override
   State<ShopPage> createState() => _ShopPageState();
@@ -37,7 +39,7 @@ class _ShopPageState extends State<ShopPage> {
           child: Column(
             children: [
               const Text(
-                "How do you like your coffee?",
+                "Which Product are you getting today?",
                 style: TextStyle(fontSize: 20),
               ),
               const SizedBox(

@@ -1,7 +1,8 @@
+import 'package:coffee_app/checkout.dart';
+import 'package:flutter/material.dart';
 import 'package:coffee_app/components/coffeeTiles.dart';
 import 'package:coffee_app/model/coffee.dart';
 import 'package:coffee_app/model/coffee_shop.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
@@ -17,7 +18,10 @@ class _CartPageState extends State<CartPage> {
     Provider.of<CoffeeShop>(context, listen: false).removeFromCart(coffee);
     showDialog(
       context: context,
-      builder: (context) => const AlertDialog(
+      builder: (
+        context,
+      ) =>
+          const AlertDialog(
         title: Text(
           " Removed from cart ",
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
@@ -25,9 +29,15 @@ class _CartPageState extends State<CartPage> {
       ),
     );
   }
-   void payNow() {
-      //payment details
-    }
+
+  void payNow() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) =>
+              CheckoutPage(purchasedItems: Provider.of<CoffeeShop>(context, listen: false).userCart)),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

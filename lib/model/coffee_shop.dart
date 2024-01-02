@@ -5,19 +5,19 @@ class CoffeeShop extends ChangeNotifier {
   //coffee menu
   final List<Coffee> _shop = [
     Coffee(
-        name: "Long Black",
+        name: "Madingo",
         price: "5.2",
-        imagePath: "assets/images/hot-coffee.png"),
+        imagePath: "assets/images/Madingo.png"),
     Coffee(
-        name: "Iced Coffee",
+        name: "Castle Bridge",
         price: "5.2",
         imagePath: "assets/images/expresso.png"),
     Coffee(
-        name: "Expresso",
+        name: "Herb Afrik",
         price: "5.2",
-        imagePath: "assets/images/coffee-cup.png"),
+        imagePath: "assets/images/afrikPremium.png"),
     Coffee(
-        name: "Latte", price: "5.2", imagePath: "assets/images/coffee-mug.png"),
+        name: "Takai", price: "5.2", imagePath: "assets/images/coffee-mug.png"),
   ];
 
   //user cart
@@ -31,7 +31,24 @@ class CoffeeShop extends ChangeNotifier {
 
   //add item to cart
   void addItemToCart(Coffee coffee) {
-    _userCart.add(coffee);
+    Coffee? existingItem;
+    for (Coffee cartItem in _userCart) {
+      if (cartItem.name == coffee.name) {
+        // Item exists, update the quantity
+        existingItem = cartItem;
+        break;
+      }
+    }
+
+    if (existingItem != null) {
+      // Item is already in the cart, increase the quantity
+      existingItem.quantity++;
+    } else {
+      // Item is not in the cart, add it
+      _userCart.add(coffee);
+    }
+
+    // _userCart.add(coffee);
     notifyListeners();
   }
 

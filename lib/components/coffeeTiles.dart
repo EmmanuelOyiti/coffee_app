@@ -20,7 +20,7 @@ class CoffeeTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: ListTile(
         title: Text(coffee.name),
-        subtitle: Text(coffee.price),
+        subtitle: Text('Price: \$${coffee.price} | Quantity: ${coffee.quantity}'),
         leading: Image.asset(coffee.imagePath),
         trailing: IconButton(
           icon: icon,
