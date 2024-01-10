@@ -33,7 +33,7 @@ class BottomNavBar extends StatelessWidget {
             GButton(
               icon: Icons.shopping_bag_outlined,
               text:
-                  "Cart (${value.userCart.length})", // Use value from Consumer
+                  "Cart (GH₵{value.userCart.length})", // Use value from Consumer
             ),
           ],
         ),

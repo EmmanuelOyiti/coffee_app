@@ -15,6 +15,8 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
   final emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
+    debugShowCheckedModeBanner:
+    false;
     return Scaffold(
       appBar: AppBar(
         title: Text("Momo Payment"),

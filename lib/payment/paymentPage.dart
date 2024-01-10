@@ -74,23 +74,6 @@ Future<String> initializeTransaction() async {
   }
 }
 
-// Future<String> initializeTransaction() async {
-//   try {
-//     final price = double.parse(widget.amount);
-//     final transaction = Transaction(
-//       amount: (price * 100).toString(),
-//       reference: widget.reference,
-//       currency: "GHS",
-//       email: widget.email,
-//     );
-//     final authResponse = await createTransaction(transaction);
-//     return checkIfUrlContainPrefixHttp(authResponse.authorization_url);
-//   } catch (e) {
-//     print("Error initializing transaction: $e");
-//     return 'https://google.com'; 
-//   }
-// }
-
 
   @override
   Widget build(BuildContext context) {

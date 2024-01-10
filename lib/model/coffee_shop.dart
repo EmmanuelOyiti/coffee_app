@@ -6,17 +6,17 @@ class CoffeeShop extends ChangeNotifier {
   //coffee menu
   final List<Coffee> _shop = [
     Coffee(
-        name: "Madingo", price: "5.2", imagePath: "assets/images/Madingo.png"),
+        name: "Madingo", price: " 65.25 ", imagePath: "assets/images/Madingo.png"),
     Coffee(
         name: "Castle Bridge",
-        price: "5.2",
+        price: " 35.0 ",
         imagePath: "assets/images/expresso.png"),
     Coffee(
         name: "Herb Afrik",
-        price: "5.2",
+        price: " 55.2 ",
         imagePath: "assets/images/afrikPremium.png"),
     Coffee(
-        name: "Takai", price: "5.2", imagePath: "assets/images/coffee-mug.png"),
+        name: "Takai", price: " 85.0 ", imagePath: "assets/images/coffee-mug.png"),
   ];
 
   //user cart
@@ -63,5 +63,14 @@ class CoffeeShop extends ChangeNotifier {
 
     notifyListeners();
     }
+  }
+
+
+  double calculateTotal() {
+    double total = 0.0;
+    for (var coffee in _userCart) {
+      total += double.parse(coffee.price) * coffee.quantity;
+    }
+    return total;
   }
 }

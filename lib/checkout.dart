@@ -1,13 +1,23 @@
+import 'package:coffee_app/payment/paymentHome.dart';
 import 'package:flutter/material.dart';
 import 'package:coffee_app/model/coffee.dart';
 
 class CheckoutPage extends StatelessWidget {
   final List<Coffee> purchasedItems;
 
-  const CheckoutPage({Key? key, required this.purchasedItems}) : super(key: key);
+  CheckoutPage({Key? key, required this.purchasedItems}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Calculate total price and quantity
+    double totalPrice = 0;
+    int totalQuantity = 0;
+
+    for (var item in purchasedItems) {
+      totalPrice += double.parse(item.price) * item.quantity;
+      totalQuantity += item.quantity;
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Checkout'),
@@ -21,73 +31,48 @@ class CheckoutPage extends StatelessWidget {
             for (var item in purchasedItems)
               ListTile(
                 title: Text(item.name),
-                subtitle: Text(item.price),
+                subtitle: Text('${item.price} x ${item.quantity}'),
                 leading: Image.asset(item.imagePath),
               ),
             SizedBox(height: 20),
-            Text('Add your payment details and complete the order.'),
+            // Display total price and quantity
+            Text('Total Quantity: $totalQuantity'),
+            SizedBox(height: 5,),
+            Text('Total Price: \GH₵ ${totalPrice.toStringAsFixed(2)}' ,style: TextStyle(fontWeight: FontWeight.bold) ),
+            SizedBox(height: 5, ),
+            Text('Confirm and complete your order.', style: TextStyle(fontWeight: FontWeight.bold),),
+            SizedBox(height: 10,),
+            GestureDetector(
+              onTap: () {
+                payNow(context); // Pass the context to payNow function
+              },
+              child: Container(
+                padding: const EdgeInsets.all(25),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.brown,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: const Center(
+                  child: Text(
+                    "Pay now",
+                    style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
+
+  void payNow(BuildContext context) {
+    // Navigate to the payment page (you can replace PaymentPageHome with your payment page)
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => PaymentPageHome()),
+    );
+  }
 }
 
-
-// import 'package:flutter/material.dart';
-// import 'package:provider/provider.dart';
-// import 'package:coffee_app/model/coffee_shop.dart';
-// import 'package:coffee_app/model/coffee.dart';
-
-// class CheckoutPage extends StatelessWidget {
-//   final List<Coffee> purchasedItems;
-
-//   const CheckoutPage({Key? key, required this.purchasedItems}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text('Checkout'),
-//       ),
-//       body: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         children: [
-//           Padding(
-//             padding: const EdgeInsets.all(16.0),
-//             child: Text(
-//               'Purchased Items:',
-//               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-//             ),
-//           ),
-//           Expanded(
-//             child: ListView.builder(
-//               itemCount: purchasedItems.length,
-//               itemBuilder: (context, index) {
-//                 Coffee coffee = purchasedItems[index];
-//                 return ListTile(
-//                   title: Text(coffee.name),
-//                   subtitle: Text('\$${coffee.price}'),
-//                   // You can customize this to show additional information
-//                 );
-//               },
-//             ),
-//           ),
-//           Padding(
-//             padding: const EdgeInsets.all(16.0),
-//             child: ElevatedButton(
-//               onPressed: () {
-//                 // Perform payment logic here
-//                 // You can use the purchasedItems for further processing
-//                 Provider.of<CoffeeShop>(context, listen: false)
-//                     .removeAllFromCart(); // Clear the cart after payment
-//                 Navigator.pop(context); // Go back to the previous screen
-//               },
-//               child: Text('Proceed to Payment'),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }

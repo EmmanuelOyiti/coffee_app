@@ -8,6 +8,6 @@ class Coffee {
     required this.name,
     required this.price,
     required this.imagePath,
-    this.quantity = 1,
+    this.quantity = 0,
   });
 }
