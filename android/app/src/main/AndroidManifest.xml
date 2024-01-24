@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.coffee_app">
+    package="com.example.gihoc_mobile">
    <application
-        android:label="coffee_app"
+        android:label="gihoc_mobile"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

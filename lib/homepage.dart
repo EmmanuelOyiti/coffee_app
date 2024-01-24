@@ -1,6 +1,6 @@
-import 'package:coffee_app/components/bottom_nav_bar.dart';
-import 'package:coffee_app/pages/cartPage.dart';
-import 'package:coffee_app/pages/shopPage.dart';
+import 'package:gihoc_mobile/components/bottom_nav_bar.dart';
+import 'package:gihoc_mobile/pages/cartPage.dart';
+import 'package:gihoc_mobile/pages/shopPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
@@ -24,11 +24,11 @@ class _HomePageState extends State<HomePage> {
   }
 
   //pages
- final List<Widget> _pages = [
-  ShopPage(coffeeShop: CoffeeShop()),  // or provide an existing CoffeeShop instance
-  CartPage(),
-];
-
+  final List<Widget> _pages = [
+    ShopPage(
+        coffeeShop: CoffeeShop()), // or provide an existing CoffeeShop instance
+    CartPage(),
+  ];
 
   @override
   Widget build(BuildContext context) {

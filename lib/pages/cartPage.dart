@@ -1,8 +1,8 @@
-import 'package:coffee_app/checkout.dart';
+import 'package:gihoc_mobile/checkout.dart';
 import 'package:flutter/material.dart';
-import 'package:coffee_app/components/coffeeTiles.dart';
-import 'package:coffee_app/model/coffee.dart';
-import 'package:coffee_app/model/coffee_shop.dart';
+import 'package:gihoc_mobile/components/coffeeTiles.dart';
+import 'package:gihoc_mobile/model/coffee.dart';
+import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:provider/provider.dart';
 
 class CartPage extends StatefulWidget {
@@ -70,7 +70,9 @@ class _CartPageState extends State<CartPage> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => CheckoutPage(purchasedItems:  Provider.of<CoffeeShop>(context, listen: false).userCart)),
+          builder: (context) => CheckoutPage(
+              purchasedItems:
+                  Provider.of<CoffeeShop>(context, listen: false).userCart)),
     );
   }
 }

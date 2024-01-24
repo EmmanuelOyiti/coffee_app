@@ -1,4 +1,4 @@
-import 'package:coffee_app/model/coffee.dart';
+import 'package:gihoc_mobile/model/coffee.dart';
 import 'package:flutter/material.dart';
 
 class CoffeeTile extends StatelessWidget {
@@ -20,7 +20,8 @@ class CoffeeTile extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       child: ListTile(
         title: Text(coffee.name),
-        subtitle: Text('Price: \GH₵${coffee.price} | Quantity: ${coffee.quantity}'),
+        subtitle:
+            Text('Price: \GH₵${coffee.price} | Quantity: ${coffee.quantity}'),
         leading: Image.asset(coffee.imagePath),
         trailing: IconButton(
           icon: icon,

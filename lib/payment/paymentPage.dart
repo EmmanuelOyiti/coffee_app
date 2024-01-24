@@ -1,7 +1,7 @@
 import 'dart:convert';
-import 'package:coffee_app/payment/apikeys.dart';
-import 'package:coffee_app/payment/paystack/paystack_auth_response.dart';
-import 'package:coffee_app/payment/transaction/transaction.dart';
+import 'package:gihoc_mobile/payment/apikeys.dart';
+import 'package:gihoc_mobile/payment/paystack/paystack_auth_response.dart';
+import 'package:gihoc_mobile/payment/transaction/transaction.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -49,31 +49,30 @@ class _PaymentPageState extends State<PaymentPage> {
     }
   }
 
-String checkIfUrlContainPrefixHttp(String url) {
-  if (url.startsWith('http://') || url.startsWith('https://')) {
-    return url;
-  } else {
-    return 'https://$url';
+  String checkIfUrlContainPrefixHttp(String url) {
+    if (url.startsWith('http://') || url.startsWith('https://')) {
+      return url;
+    } else {
+      return 'https://$url';
+    }
   }
-}
 
-Future<String> initializeTransaction() async {
-  try {
-    final price = double.parse(widget.amount);
-    final transaction = Transaction(
-      amount: (price * 100).toString(),
-      reference: widget.reference,
-      currency: "GHS",
-      email: widget.email,
-    );
-    final authResponse = await createTransaction(transaction);
-    return checkIfUrlContainPrefixHttp(authResponse.authorization_url);
-  } catch (e) {
-    print("Error initializing transaction: $e");
-    return e.toString();
+  Future<String> initializeTransaction() async {
+    try {
+      final price = double.parse(widget.amount);
+      final transaction = Transaction(
+        amount: (price * 100).toString(),
+        reference: widget.reference,
+        currency: "GHS",
+        email: widget.email,
+      );
+      final authResponse = await createTransaction(transaction);
+      return checkIfUrlContainPrefixHttp(authResponse.authorization_url);
+    } catch (e) {
+      print("Error initializing transaction: $e");
+      return e.toString();
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +83,7 @@ Future<String> initializeTransaction() async {
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final url = snapshot.data;
-                print("WebView URL: $url");
+              print("WebView URL: $url");
               return WebViewWidget(
                 controller: WebViewController()
                   ..setJavaScriptMode(JavaScriptMode.unrestricted)

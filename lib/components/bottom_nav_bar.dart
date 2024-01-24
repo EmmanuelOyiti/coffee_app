@@ -1,8 +1,8 @@
-import 'package:coffee_app/model/coffee_shop.dart';
+import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
-import 'package:coffee_app/model/coffee_shop.dart';
+import 'package:gihoc_mobile/model/coffee_shop.dart';
 
 class BottomNavBar extends StatelessWidget {
   void Function(int)? onTabChange;

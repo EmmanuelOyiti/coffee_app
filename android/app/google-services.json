@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "881477916914",
+    "project_id": "gihoc-mobile",
+    "storage_bucket": "gihoc-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:881477916914:android:671a2d9b1e308e3330586b",
+        "android_client_info": {
+          "package_name": "com.example.gihoc_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-JPgPoNW8clEzYSf9Rmvxo7iZc6upeps"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

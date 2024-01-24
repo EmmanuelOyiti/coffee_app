@@ -6,17 +6,26 @@ class CoffeeShop extends ChangeNotifier {
   //coffee menu
   final List<Coffee> _shop = [
     Coffee(
+        name: "Takai", price: " 85.0 ", imagePath: "assets/images/takai.png"),
+    Coffee(
         name: "Madingo", price: " 65.25 ", imagePath: "assets/images/Madingo.png"),
     Coffee(
-        name: "Castle Bridge",
-        price: " 35.0 ",
-        imagePath: "assets/images/expresso.png"),
-    Coffee(
-        name: "Herb Afrik",
-        price: " 55.2 ",
+        name: "Herb-Afrik Premium",
+        price: " 65.2 ",
         imagePath: "assets/images/afrikPremium.png"),
     Coffee(
-        name: "Takai", price: " 85.0 ", imagePath: "assets/images/coffee-mug.png"),
+        name: "Apet Premium",
+        price: " 65.2 ",
+        imagePath: "assets/images/apetPremium.png"),
+    Coffee(
+        name: "Meridian",
+        price: " 5.0 ",
+        imagePath: "assets/images/water.png"),
+    Coffee(
+        name: "Apet Gin",
+        price: " 45.2 ",
+        imagePath: "assets/images/apetGin.png"),
+    
   ];
 
   //user cart

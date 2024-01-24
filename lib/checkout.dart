@@ -1,6 +1,6 @@
-import 'package:coffee_app/payment/paymentHome.dart';
+import 'package:gihoc_mobile/payment/paymentHome.dart';
 import 'package:flutter/material.dart';
-import 'package:coffee_app/model/coffee.dart';
+import 'package:gihoc_mobile/model/coffee.dart';
 
 class CheckoutPage extends StatelessWidget {
   final List<Coffee> purchasedItems;
@@ -37,11 +37,21 @@ class CheckoutPage extends StatelessWidget {
             SizedBox(height: 20),
             // Display total price and quantity
             Text('Total Quantity: $totalQuantity'),
-            SizedBox(height: 5,),
-            Text('Total Price: \GH₵ ${totalPrice.toStringAsFixed(2)}' ,style: TextStyle(fontWeight: FontWeight.bold) ),
-            SizedBox(height: 5, ),
-            Text('Confirm and complete your order.', style: TextStyle(fontWeight: FontWeight.bold),),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 5,
+            ),
+            Text('Total Price: \GH₵ ${totalPrice.toStringAsFixed(2)}',
+                style: TextStyle(fontWeight: FontWeight.bold)),
+            SizedBox(
+              height: 5,
+            ),
+            Text(
+              'Confirm and complete your order.',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 10,
+            ),
             GestureDetector(
               onTap: () {
                 payNow(context); // Pass the context to payNow function
@@ -56,7 +66,8 @@ class CheckoutPage extends StatelessWidget {
                 child: const Center(
                   child: Text(
                     "Pay now",
-                    style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -75,4 +86,3 @@ class CheckoutPage extends StatelessWidget {
     );
   }
 }
-

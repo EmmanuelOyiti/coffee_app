@@ -1,6 +1,6 @@
-import 'package:coffee_app/components/coffeeTiles.dart';
-import 'package:coffee_app/model/coffee.dart';
-import 'package:coffee_app/model/coffee_shop.dart';
+import 'package:gihoc_mobile/components/coffeeTiles.dart';
+import 'package:gihoc_mobile/model/coffee.dart';
+import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

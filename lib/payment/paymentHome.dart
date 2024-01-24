@@ -1,4 +1,4 @@
-import 'package:coffee_app/payment/paymentPage.dart';
+import 'package:gihoc_mobile/payment/paymentPage.dart';
 import 'package:flutter/material.dart';
 
 class PaymentPageHome extends StatefulWidget {
