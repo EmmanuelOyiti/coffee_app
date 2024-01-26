@@ -1,8 +1,9 @@
-import 'package:gihoc_mobile/login_page.dart';
+import 'package:gihoc_mobile/auth/main_page.dart';
+import 'package:gihoc_mobile/auth/pages/login_page.dart';
 import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'homepage.dart';
+import 'auth/pages/homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -26,7 +27,8 @@ class MyApp extends StatelessWidget {
         create: (context) => CoffeeShop(),
         builder: (context, child) => const MaterialApp(
               debugShowCheckedModeBanner: false,
-              home: LoginPage(),
+              home: MainPage(),
+              // LoginPage(),
               // HomePage(),
             ));
   }

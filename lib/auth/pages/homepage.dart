@@ -4,7 +4,7 @@ import 'package:gihoc_mobile/pages/shopPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
-import 'model/coffee_shop.dart';
+import '../../model/coffee_shop.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
