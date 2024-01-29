@@ -45,6 +45,7 @@ class _CartPageState extends State<CartPage> {
               GestureDetector(
                 onTap: payNow,
                 child: Container(
+                  margin: EdgeInsets.only(top: 20, bottom: 0),
                   padding: const EdgeInsets.all(15),
                   width: 150,
                   decoration: BoxDecoration(

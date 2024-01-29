@@ -8,7 +8,9 @@ class CoffeeShop extends ChangeNotifier {
     Coffee(
         name: "Takai", price: " 85.0 ", imagePath: "assets/images/takai.png"),
     Coffee(
-        name: "Madingo", price: " 65.25 ", imagePath: "assets/images/Madingo.png"),
+        name: "Madingo",
+        price: " 65.25 ",
+        imagePath: "assets/images/Madingo.png"),
     Coffee(
         name: "Herb-Afrik Premium",
         price: " 65.2 ",
@@ -18,14 +20,11 @@ class CoffeeShop extends ChangeNotifier {
         price: " 65.2 ",
         imagePath: "assets/images/apetPremium.png"),
     Coffee(
-        name: "Meridian",
-        price: " 5.0 ",
-        imagePath: "assets/images/water.png"),
+        name: "Meridian", price: " 5.0 ", imagePath: "assets/images/water.png"),
     Coffee(
         name: "Apet Gin",
         price: " 45.2 ",
         imagePath: "assets/images/apetGin.png"),
-    
   ];
 
   //user cart
@@ -41,41 +40,9 @@ class CoffeeShop extends ChangeNotifier {
 
   int getQuantityInCart(Coffee coffee) => _cartQuantity[coffee] ?? 0;
 
-  //add item to cart
-  // void addItemToCart(Coffee coffee) {
-  //   Coffee? existingItem = _userCart.firstWhereOrNull((item) => item.name == coffee.name);
-
-  // if (existingItem != null) {
-  //   // Item is already in the cart, increase the quantity
-  //   existingItem.quantity++;
-  // } else {
-  //   // Item is not in the cart, add it
-  //   _userCart.add(coffee);
-  // }
-
-  // }
-   
-
- 
-  // //remove item from cart
-  // void removeFromCart(Coffee coffee) {
-  //     Coffee? existingItem = _userCart.firstWhereOrNull((item) => item == coffee);
-
-  // if (existingItem != null) {
-  //   // Item is in the cart, reduce the quantity
-  //   if (existingItem.quantity > 1) {
-  //     existingItem.quantity--;  // Decrease the quantity
-  //   } else {
-  //     // If the quantity is 1, remove the item from the cart
-  //     _userCart.remove(coffee);
-  //   }
-
-  //   notifyListeners();
-  //   }
-  // }
-
-   void addItemToCart(Coffee coffee) {
-    Coffee? existingItem = _userCart.firstWhereOrNull((item) => item.name == coffee.name);
+  void addItemToCart(Coffee coffee) {
+    Coffee? existingItem =
+        _userCart.firstWhereOrNull((item) => item.name == coffee.name);
 
     if (existingItem != null) {
       // Item is already in the cart, increase the quantity
@@ -85,28 +52,29 @@ class CoffeeShop extends ChangeNotifier {
       _userCart.add(coffee);
     }
 
-    _cartQuantity[coffee] = getQuantityInCart(coffee); // Update quantity in _cartQuantity
-    notifyListeners();  // Notify listeners after updating the cart
+    _cartQuantity[coffee] =
+        getQuantityInCart(coffee); // Update quantity in _cartQuantity
+    notifyListeners(); // Notify listeners after updating the cart
   }
 
-    //remove item from cart
+  //remove item from cart
   void removeFromCart(Coffee coffee) {
     Coffee? existingItem = _userCart.firstWhereOrNull((item) => item == coffee);
 
     if (existingItem != null) {
       // Item is in the cart, reduce the quantity
       if (existingItem.quantity > 1) {
-        existingItem.quantity--;  // Decrease the quantity
+        existingItem.quantity--; // Decrease the quantity
       } else {
         // If the quantity is 1, remove the item from the cart
         _userCart.remove(coffee);
       }
 
-      _cartQuantity[coffee] = getQuantityInCart(coffee); // Update quantity in _cartQuantity
-      notifyListeners();  // Notify listeners after updating the cart
+      _cartQuantity[coffee] =
+          getQuantityInCart(coffee); // Update quantity in _cartQuantity
+      notifyListeners(); // Notify listeners after updating the cart
     }
   }
-
 
   double calculateTotal() {
     double total = 0.0;

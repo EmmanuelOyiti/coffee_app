@@ -1,3 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gihoc_mobile/components/bottom_nav_bar.dart';
 import 'package:gihoc_mobile/pages/cartPage.dart';
 import 'package:gihoc_mobile/pages/shopPage.dart';
@@ -17,6 +19,8 @@ class _HomePageState extends State<HomePage> {
   //navigate bottombar
   int _selectedIndex = 0;
 
+  final user = FirebaseAuth.instance.currentUser!;
+
   void navigateBottomBar(int index) {
     setState(() {
       _selectedIndex = index;
@@ -33,6 +37,28 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          user.email!,
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
+        backgroundColor: Colors.grey[350],
+        centerTitle: true,
+        actions: [
+          GestureDetector(
+              onTap: () {
+                FirebaseAuth.instance.signOut();
+              },
+              child: Padding(
+                padding: const EdgeInsets.only(right: 35.0),
+                child: Icon(
+                  Icons.logout,
+                ),
+              ))
+        ],
+      ),
       backgroundColor: Colors.grey[300],
       bottomNavigationBar: BottomNavBar(
         onTabChange: (index) => navigateBottomBar(index),
@@ -50,7 +76,7 @@ class BottomNavBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 0),
-      padding: EdgeInsets.only(bottom: 20, top: 0),
+      padding: const EdgeInsets.only(bottom: 20, top: 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15), // Adjust the radius value
         // Add other decorations if needed, such as color or boxShadow

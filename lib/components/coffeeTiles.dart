@@ -21,7 +21,7 @@ class CoffeeTile extends StatelessWidget {
       child: ListTile(
         title: Text(coffee.name),
         subtitle:
-            Text('Price: \GH₵${coffee.price} | Quantity: ${coffee.quantity}'),
+            Text('Price: \GH₵${coffee.price}  Quantity: ${coffee.quantity}'),
         leading: Image.asset(coffee.imagePath),
         trailing: IconButton(
           icon: icon,
