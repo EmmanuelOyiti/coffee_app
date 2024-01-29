@@ -57,8 +57,8 @@ class CheckoutPage extends StatelessWidget {
                 payNow(context); // Pass the context to payNow function
               },
               child: Container(
-                padding: const EdgeInsets.all(25),
-                width: double.infinity,
+                padding: const EdgeInsets.all(15),
+                width: 150,
                 decoration: BoxDecoration(
                   color: Colors.brown,
                   borderRadius: BorderRadius.circular(12),

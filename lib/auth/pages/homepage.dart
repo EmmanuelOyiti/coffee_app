@@ -49,7 +49,12 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(25),
+      margin: const EdgeInsets.only(top: 0),
+      padding: EdgeInsets.only(bottom: 20, top: 0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15), // Adjust the radius value
+        // Add other decorations if needed, such as color or boxShadow
+      ),
       child: Consumer<CoffeeShop>(
         builder: (context, value, child) => GNav(
           onTabChange: (value) => onTabChange!(value),

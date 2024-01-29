@@ -25,7 +25,7 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(1),
+          padding: const EdgeInsets.all(25),
           child: Column(
             children: [
               TextFormField(
@@ -77,7 +77,7 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.all(50.0),
                 child: SizedBox(
                     width: double.infinity,
                     height: 45,
