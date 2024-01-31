@@ -26,78 +26,80 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(25),
-          child: Column(
-            children: [
-              TextFormField(
-                controller: amountController,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Required field empty";
-                  }
-                  return null;
-                },
-                decoration: InputDecoration(
-                  labelText: "Amount",
-                  hintText: "Enter Amount",
-                  border: OutlineInputBorder(),
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                TextFormField(
+                  controller: amountController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Required field empty";
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    labelText: "Amount",
+                    hintText: "Enter Amount",
+                    border: OutlineInputBorder(),
+                  ),
                 ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                controller: refernceController,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Required field empty";
-                  }
-                  return null;
-                },
-                decoration: InputDecoration(
-                  labelText: "Reference",
-                  hintText: "Enter Reference",
-                  border: OutlineInputBorder(),
+                SizedBox(
+                  height: 15,
                 ),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              TextFormField(
-                controller: emailController,
-                validator: (value) {
-                  if (value!.isEmpty) {
-                    return "Required field empty";
-                  }
-                  return null;
-                },
-                decoration: InputDecoration(
-                  labelText: "Email",
-                  hintText: "Enter Your Email",
-                  border: OutlineInputBorder(),
+                TextFormField(
+                  controller: refernceController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Required field empty";
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    labelText: "Reference",
+                    hintText: "Enter Reference",
+                    border: OutlineInputBorder(),
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(50.0),
-                child: SizedBox(
-                    width: double.infinity,
-                    height: 45,
-                    child: ElevatedButton(
-                        onPressed: () {
-                          if (!_formKey.currentState!.validate()) {
-                            return;
-                          }
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PaymentPage(
-                                        amount: amountController.text,
-                                        email: emailController.text,
-                                        reference: refernceController.text,
-                                      )));
-                        },
-                        child: Text("Proceed to payment"))),
-              ),
-            ],
+                SizedBox(
+                  height: 15,
+                ),
+                TextFormField(
+                  controller: emailController,
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return "Required field empty";
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                    labelText: "Email",
+                    hintText: "Enter Your Email",
+                    border: OutlineInputBorder(),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(50.0),
+                  child: SizedBox(
+                      width: double.infinity,
+                      height: 45,
+                      child: ElevatedButton(
+                          onPressed: () {
+                            if (!_formKey.currentState!.validate()) {
+                              return;
+                            }
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => PaymentPage(
+                                          amount: amountController.text,
+                                          email: emailController.text,
+                                          reference: refernceController.text,
+                                        )));
+                          },
+                          child: Text("Proceed to payment"))),
+                ),
+              ],
+            ),
           ),
         ),
       ),
