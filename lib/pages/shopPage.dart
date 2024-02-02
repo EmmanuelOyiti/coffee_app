@@ -2,6 +2,7 @@ import 'package:gihoc_mobile/components/coffeeTiles.dart';
 import 'package:gihoc_mobile/model/coffee.dart';
 import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class ShopPage extends StatefulWidget {
@@ -38,9 +39,9 @@ class _ShopPageState extends State<ShopPage> {
           padding: const EdgeInsets.all(25.0),
           child: Column(
             children: [
-              const Text(
+              Text(
                 "Which Product are you getting today?",
-                style: TextStyle(fontSize: 20),
+                style: GoogleFonts.oswald(fontSize: 20),
               ),
               const SizedBox(
                 height: 25,

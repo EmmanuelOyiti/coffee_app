@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gihoc_mobile/auth/pages/forgot_password.dart';
+import 'package:gihoc_mobile/components/dimensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginPage extends StatefulWidget {
@@ -55,7 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                 size: 80,
               ),
               SizedBox(
-                height: 30,
+                height: Dimensions.height30,
               ),
               Text(
                 "Hello, Again!",
@@ -90,7 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
 
               // Password text field
@@ -113,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -139,7 +140,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -163,7 +164,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               SizedBox(
-                height: 25,
+                height: Dimensions.height26,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,

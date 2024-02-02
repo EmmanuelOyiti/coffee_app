@@ -42,10 +42,10 @@ class _PaymentPageState extends State<PaymentPage> {
         final responseData = jsonDecode(response.body);
         return PaystackAuthResponse.fromJson(responseData["data"]);
       } else {
-        throw "Payment unsuccessful";
+        throw "Payment was unsuccessful";
       }
     } on Exception {
-      throw "Payment unsuccessful";
+      throw "Payment was unsuccessful";
     }
   }
 

@@ -4,6 +4,7 @@ import 'package:gihoc_mobile/components/bottom_nav_bar.dart';
 import 'package:gihoc_mobile/pages/cartPage.dart';
 import 'package:gihoc_mobile/pages/shopPage.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
 import '../../model/coffee_shop.dart';
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text(
           user.email!,
-          style: TextStyle(
+          style: GoogleFonts.lato(
             fontSize: 20,
           ),
         ),
