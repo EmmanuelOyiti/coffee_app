@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gihoc_mobile/components/dimensions.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -59,7 +60,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: Dimensions.height10,
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),

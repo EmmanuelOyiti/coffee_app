@@ -1,4 +1,5 @@
 import 'package:gihoc_mobile/components/coffeeTiles.dart';
+import 'package:gihoc_mobile/components/dimensions.dart';
 import 'package:gihoc_mobile/model/coffee.dart';
 import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:flutter/material.dart';
@@ -43,8 +44,8 @@ class _ShopPageState extends State<ShopPage> {
                 "Which Product are you getting today?",
                 style: GoogleFonts.oswald(fontSize: 20),
               ),
-              const SizedBox(
-                height: 25,
+              SizedBox(
+                height: Dimensions.height25,
               ),
 
               //list of coffees

@@ -1,6 +1,7 @@
 import 'package:gihoc_mobile/checkout.dart';
 import 'package:flutter/material.dart';
 import 'package:gihoc_mobile/components/coffeeTiles.dart';
+import 'package:gihoc_mobile/components/dimensions.dart';
 import 'package:gihoc_mobile/model/coffee.dart';
 import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:provider/provider.dart';

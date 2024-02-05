@@ -1,3 +1,4 @@
+import 'package:gihoc_mobile/components/dimensions.dart';
 import 'package:gihoc_mobile/payment/paymentPage.dart';
 import 'package:flutter/material.dart';
 
@@ -44,7 +45,7 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: Dimensions.height15,
                 ),
                 TextFormField(
                   controller: refernceController,
@@ -61,7 +62,7 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: Dimensions.height15,
                 ),
                 TextFormField(
                   controller: emailController,
@@ -81,7 +82,7 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
                   padding: const EdgeInsets.all(50.0),
                   child: SizedBox(
                       width: double.infinity,
-                      height: 45,
+                      height: Dimensions.height45,
                       child: ElevatedButton(
                           onPressed: () {
                             if (!_formKey.currentState!.validate()) {

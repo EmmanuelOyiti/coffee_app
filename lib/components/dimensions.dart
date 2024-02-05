@@ -1,26 +1,40 @@
-import 'package:get/get.dart';
+// import 'package:get/get.dart';
 
-class Dimensions {
-  static double scrnHeight = Get.context!.height;
-  static double scrnWidth = Get.context!.width;
+// class Dimensions {
+//   static double scrnHeight = Get.context!.height;
+//   static double scrnWidth = Get.context!.width;
 
-  static double pageViewContainer = scrnHeight / 3.32;
-  static double pageView = scrnHeight / 2.28;
-  static double pageViewTextContainer = scrnHeight / 6.09;
+//   static double pageViewContainer = scrnHeight / 3.32;
+//   static double pageView = scrnHeight / 2.28;
+//   static double pageViewTextContainer = scrnHeight / 6.09;
 
 //margin and padding
+import 'package:flutter/widgets.dart';
+
+class Dimensions {
+  static double scrnWidth = WidgetsBinding.instance!.window.physicalSize.width /
+      WidgetsBinding.instance!.window.devicePixelRatio;
+  static double scrnHeight =
+      WidgetsBinding.instance!.window.physicalSize.height /
+          WidgetsBinding.instance!.window.devicePixelRatio;
+
   static double height300 = scrnHeight / 15.5;
   static double height10 = scrnHeight / 73.1;
   static double height20 = scrnHeight / 36.55;
   static double height15 = scrnHeight / 48.7;
   static double height30 = scrnHeight / 28.1;
   static double height45 = scrnHeight / 16.4;
+  static double height25 = scrnHeight / 29.4;
+  static double height5 = scrnHeight / 146.2;
+  static double height50 = scrnHeight / 14.1;
 
-  static double width10 = scrnHeight / 73.1;
-  static double width20 = scrnHeight / 36.55;
-  static double width15 = scrnHeight / 48.7;
-  static double width30 = scrnHeight / 28.1;
-  static double width45 = scrnHeight / 16.4;
+  // static double width10 = scrnHeight / 73.1;
+  // static double width20 = scrnHeight / 36.55;
+  // static double width15 = scrnHeight / 48.7;
+  // static double width30 = scrnHeight / 28.1;
+  // static double width45 = scrnHeight / 16.4;
+
+  static double width150 = 150;
 
   static double font26 = scrnHeight / 28.11;
   static double font20 = scrnHeight / 36.55;
@@ -41,7 +55,6 @@ class Dimensions {
 
   //fontsize
   static double height26 = scrnHeight / 28.12;
-  
 
   //list view
   static double listViewImgSize = scrnHeight / 6.09;

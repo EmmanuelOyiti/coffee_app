@@ -1,3 +1,4 @@
+import 'package:gihoc_mobile/components/dimensions.dart';
 import 'package:gihoc_mobile/payment/paymentHome.dart';
 import 'package:flutter/material.dart';
 import 'package:gihoc_mobile/model/coffee.dart';
@@ -34,23 +35,23 @@ class CheckoutPage extends StatelessWidget {
                 subtitle: Text('${item.price} x ${item.quantity}'),
                 leading: Image.asset(item.imagePath),
               ),
-            SizedBox(height: 20),
+            SizedBox(height: Dimensions.height20),
             // Display total price and quantity
             Text('Total Quantity: $totalQuantity'),
             SizedBox(
-              height: 5,
+              height: Dimensions.height5,
             ),
             Text('Total Price: \GH₵ ${totalPrice.toStringAsFixed(2)}',
                 style: TextStyle(fontWeight: FontWeight.bold)),
             SizedBox(
-              height: 5,
+              height: Dimensions.height5,
             ),
             Text(
               'Confirm and complete your order.',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             SizedBox(
-              height: 10,
+              height: Dimensions.height10,
             ),
             GestureDetector(
               onTap: () {

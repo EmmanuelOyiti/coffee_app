@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gihoc_mobile/components/dimensions.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -103,14 +104,14 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
               Text("Register below with your details",
                   style: TextStyle(
                     fontSize: 22,
                   )),
               SizedBox(
-                height: 50,
+                height: Dimensions.height50,
               ),
 
               //firstname text field
@@ -129,7 +130,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
 
               //lastName text field
@@ -148,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
 
               //age text field
@@ -167,7 +168,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
 
               //email text field
@@ -186,7 +187,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
 
               //password textfield
@@ -210,7 +211,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
 
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
 
               //confirm password text field
@@ -233,7 +234,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(
-                height: 10,
+                height: Dimensions.height10,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -257,7 +258,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ),
               SizedBox(
-                height: 25,
+                height: Dimensions.height25,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
