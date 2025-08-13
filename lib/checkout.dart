@@ -1,15 +1,19 @@
-import 'package:gihoc_mobile/components/dimensions.dart';
-import 'package:gihoc_mobile/payment/paymentHome.dart';
 import 'package:flutter/material.dart';
+import 'package:gihoc_mobile/components/dimensions.dart';
 import 'package:gihoc_mobile/model/coffee.dart';
+import 'package:gihoc_mobile/payment/payment_home.dart';
 
 class CheckoutPage extends StatelessWidget {
   final List<Coffee> purchasedItems;
 
-  CheckoutPage({Key? key, required this.purchasedItems}) : super(key: key);
+  const CheckoutPage({Key? key, required this.purchasedItems})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    // Create Dimensions instance
+    final dim = Dimensions(context);
+
     // Calculate total price and quantity
     double totalPrice = 0;
     int totalQuantity = 0;
@@ -28,38 +32,32 @@ class CheckoutPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text('Your purchased items:'),
-            // Display the purchased items
             for (var item in purchasedItems)
               ListTile(
                 title: Text(item.name),
                 subtitle: Text('${item.price} x ${item.quantity}'),
                 leading: Image.asset(item.imagePath),
               ),
-            SizedBox(height: Dimensions.height20),
-            // Display total price and quantity
+            SizedBox(height: dim.height20),
             Text('Total Quantity: $totalQuantity'),
-            SizedBox(
-              height: Dimensions.height5,
-            ),
-            Text('Total Price: \GH₵ ${totalPrice.toStringAsFixed(2)}',
-                style: TextStyle(fontWeight: FontWeight.bold)),
-            SizedBox(
-              height: Dimensions.height5,
-            ),
+            SizedBox(height: dim.height5),
             Text(
+              'Total Price: GH₵ ${totalPrice.toStringAsFixed(2)}',
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: dim.height5),
+            const Text(
               'Confirm and complete your order.',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            SizedBox(
-              height: Dimensions.height10,
-            ),
+            SizedBox(height: dim.height10),
             GestureDetector(
               onTap: () {
-                payNow(context); // Pass the context to payNow function
+                payNow(context);
               },
               child: Container(
                 padding: const EdgeInsets.all(15),
-                width: 150,
+                width: dim.width150,
                 decoration: BoxDecoration(
                   color: Colors.brown,
                   borderRadius: BorderRadius.circular(12),
@@ -80,10 +78,9 @@ class CheckoutPage extends StatelessWidget {
   }
 
   void payNow(BuildContext context) {
-    // Navigate to the payment page (you can replace PaymentPageHome with your payment page)
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => PaymentPageHome()),
+      MaterialPageRoute(builder: (context) => const PaymentPageHome()),
     );
   }
 }

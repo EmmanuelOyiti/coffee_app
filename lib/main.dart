@@ -1,9 +1,6 @@
-import 'package:gihoc_mobile/auth/main_page.dart';
-import 'package:gihoc_mobile/auth/pages/login_page.dart';
 import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'auth/pages/homepage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -22,12 +19,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => CoffeeShop(),
-        builder: (context, child) => const MaterialApp(
-              debugShowCheckedModeBanner: false,
-              home: MainPage(),
-              // LoginPage(),
-              // HomePage(),
-            ));
+      create: (context) => CoffeeShop(),
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Text("data")
+        // MainPage(),
+        // LoginPage(),
+        // HomePage(),
+      ),);
   }
 }

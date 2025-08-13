@@ -1,6 +1,6 @@
-import 'package:gihoc_mobile/components/dimensions.dart';
-import 'package:gihoc_mobile/payment/paymentPage.dart';
 import 'package:flutter/material.dart';
+import 'package:gihoc_mobile/components/dimensions.dart';
+import 'package:gihoc_mobile/payment/payment_page.dart';
 
 class PaymentPageHome extends StatefulWidget {
   const PaymentPageHome({super.key});
@@ -14,13 +14,14 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
   final amountController = TextEditingController();
   final refernceController = TextEditingController();
   final emailController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
-    debugShowCheckedModeBanner:
-    false;
+    final dim = Dimensions(context); 
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Momo Payment"),
+        title: const Text("Momo Payment"),
         elevation: 0,
       ),
       body: Form(
@@ -38,15 +39,13 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Amount",
                     hintText: "Enter Amount",
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(
-                  height: Dimensions.height15,
-                ),
+                SizedBox(height: dim.height15),
                 TextFormField(
                   controller: refernceController,
                   validator: (value) {
@@ -55,15 +54,13 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Reference",
                     hintText: "Enter Reference",
                     border: OutlineInputBorder(),
                   ),
                 ),
-                SizedBox(
-                  height: Dimensions.height15,
-                ),
+                SizedBox(height: dim.height15),
                 TextFormField(
                   controller: emailController,
                   validator: (value) {
@@ -72,7 +69,7 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
                     }
                     return null;
                   },
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     labelText: "Email",
                     hintText: "Enter Your Email",
                     border: OutlineInputBorder(),
@@ -81,23 +78,26 @@ class _PaymentPageHomeState extends State<PaymentPageHome> {
                 Padding(
                   padding: const EdgeInsets.all(50.0),
                   child: SizedBox(
-                      width: double.infinity,
-                      height: Dimensions.height45,
-                      child: ElevatedButton(
-                          onPressed: () {
-                            if (!_formKey.currentState!.validate()) {
-                              return;
-                            }
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => PaymentPage(
-                                          amount: amountController.text,
-                                          email: emailController.text,
-                                          reference: refernceController.text,
-                                        )));
-                          },
-                          child: Text("Proceed to payment"))),
+                    width: double.infinity,
+                    height: dim.height45,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (!_formKey.currentState!.validate()) return;
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => PaymentPage(
+                              amount: amountController.text,
+                              email: emailController.text,
+                              reference: refernceController.text,
+                            ),
+                          ),
+                        );
+                      },
+                      child: const Text("Proceed to payment"),
+                    ),
+                  ),
                 ),
               ],
             ),

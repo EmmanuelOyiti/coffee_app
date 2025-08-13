@@ -1,68 +1,54 @@
-// import 'package:get/get.dart';
-
-// class Dimensions {
-//   static double scrnHeight = Get.context!.height;
-//   static double scrnWidth = Get.context!.width;
-
-//   static double pageViewContainer = scrnHeight / 3.32;
-//   static double pageView = scrnHeight / 2.28;
-//   static double pageViewTextContainer = scrnHeight / 6.09;
-
-//margin and padding
 import 'package:flutter/widgets.dart';
 
 class Dimensions {
-  static double scrnWidth = WidgetsBinding.instance!.window.physicalSize.width /
-      WidgetsBinding.instance!.window.devicePixelRatio;
-  static double scrnHeight =
-      WidgetsBinding.instance!.window.physicalSize.height /
-          WidgetsBinding.instance!.window.devicePixelRatio;
+  final BuildContext context;
+  final double screenWidth;
+  final double screenHeight;
 
-  static double height300 = scrnHeight / 15.5;
-  static double height10 = scrnHeight / 73.1;
-  static double height20 = scrnHeight / 36.55;
-  static double height15 = scrnHeight / 48.7;
-  static double height30 = scrnHeight / 28.1;
-  static double height45 = scrnHeight / 16.4;
-  static double height25 = scrnHeight / 29.4;
-  static double height5 = scrnHeight / 146.2;
-  static double height50 = scrnHeight / 14.1;
+  Dimensions(this.context)
+      : screenWidth = MediaQuery.of(context).size.width,
+        screenHeight = MediaQuery.of(context).size.height;
 
-  // static double width10 = scrnHeight / 73.1;
-  // static double width20 = scrnHeight / 36.55;
-  // static double width15 = scrnHeight / 48.7;
-  // static double width30 = scrnHeight / 28.1;
-  // static double width45 = scrnHeight / 16.4;
+  // Heights
+  double get height300 => screenHeight / 15.5;
+  double get height10 => screenHeight / 73.1;
+  double get height20 => screenHeight / 36.55;
+  double get height15 => screenHeight / 48.7;
+  double get height30 => screenHeight / 28.1;
+  double get height45 => screenHeight / 16.4;
+  double get height25 => screenHeight / 29.4;
+  double get height5 => screenHeight / 146.2;
+  double get height50 => screenHeight / 14.1;
 
-  static double width150 = 150;
+  // Widths
+  double get width150 => 150;
 
-  static double font26 = scrnHeight / 28.11;
-  static double font20 = scrnHeight / 36.55;
-  static double font16 = scrnHeight / 45.69;
-  static double font12 = scrnHeight / 58.07;
+  // Font sizes
+  double get font26 => screenHeight / 28.11;
+  double get font20 => screenHeight / 36.55;
+  double get font16 => screenHeight / 45.69;
+  double get font12 => screenHeight / 58.07;
 
-  static double margin30 = scrnHeight / 28.1;
-  static double margin45 = scrnHeight / 16.4;
+  // Margins
+  double get margin30 => screenHeight / 28.1;
+  double get margin45 => screenHeight / 16.4;
 
-  //radius
-  static double radius20 = scrnHeight / 36.55;
-  static double radius30 = scrnHeight / 28.1;
-  static double radius15 = scrnHeight / 48.7;
+  // Radii
+  double get radius20 => screenHeight / 36.55;
+  double get radius30 => screenHeight / 28.1;
+  double get radius15 => screenHeight / 48.7;
 
-  //icons Size
-  static double iconSize24 = scrnHeight / 30.05;
-  static double iconSize16 = scrnHeight / 45.7;
+  // Icon sizes
+  double get iconSize24 => screenHeight / 30.05;
+  double get iconSize16 => screenHeight / 45.7;
 
-  //fontsize
-  static double height26 = scrnHeight / 28.12;
+  // ListView sizes
+  double get listViewImgSize => screenHeight / 6.09;
+  double get listViewTextContSize => screenHeight / 7.31;
 
-  //list view
-  static double listViewImgSize = scrnHeight / 6.09;
-  static double listViewTextContSize = scrnHeight / 7.31;
+  // Popular food image
+  double get popularFoodImgSize => screenHeight / 2.09;
 
-  //popular food
-  static double popularFoodImgSize = scrnHeight / 2.09;
-
-  //bottom height
-  static double bottomHeight = scrnHeight / 6.09;
+  // Bottom bar height
+  double get bottomHeight => screenHeight / 6.09;
 }

@@ -1,13 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
-import 'package:gihoc_mobile/components/bottom_nav_bar.dart';
-import 'package:gihoc_mobile/pages/cartPage.dart';
-import 'package:gihoc_mobile/pages/shopPage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:provider/provider.dart';
+
 import '../../model/coffee_shop.dart';
+import '../../pages/cart_page.dart';
+import '../../pages/shop_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,9 +16,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //navigate bottombar
   int _selectedIndex = 0;
-
   final user = FirebaseAuth.instance.currentUser!;
 
   void navigateBottomBar(int index) {
@@ -28,41 +25,54 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  //pages
   final List<Widget> _pages = [
-    ShopPage(
-        coffeeShop: CoffeeShop()), // or provide an existing CoffeeShop instance
-    CartPage(),
+    ShopPage(coffeeShop: CoffeeShop()),
+    const CartPage(),
   ];
+
+  Future<void> _signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      if (!mounted) return;
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Error signing out: $e")),
+      );
+      return;
+    }
+
+    if (!mounted) return;
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Signed out successfully")),
+    );
+
+    // Optional: Navigate to login
+    // Navigator.pushReplacementNamed(context, '/login');
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          user.email!,
-          style: GoogleFonts.lato(
-            fontSize: 20,
-          ),
+          user.email ?? "Guest",
+          style: GoogleFonts.lato(fontSize: 20),
         ),
         backgroundColor: Colors.grey[350],
         centerTitle: true,
         actions: [
-          GestureDetector(
-              onTap: () {
-                FirebaseAuth.instance.signOut();
-              },
-              child: Padding(
-                padding: const EdgeInsets.only(right: 35.0),
-                child: Icon(
-                  Icons.logout,
-                ),
-              ))
+          IconButton(
+            icon: const Icon(Icons.logout),
+            padding: const EdgeInsets.only(right: 20.0),
+            onPressed: _signOut,
+          ),
         ],
       ),
       backgroundColor: Colors.grey[300],
       bottomNavigationBar: BottomNavBar(
-        onTabChange: (index) => navigateBottomBar(index),
+        onTabChange: navigateBottomBar,
       ),
       body: _pages[_selectedIndex],
     );
@@ -70,21 +80,28 @@ class _HomePageState extends State<HomePage> {
 }
 
 class BottomNavBar extends StatelessWidget {
-  void Function(int)? onTabChange;
-  BottomNavBar({super.key, required this.onTabChange});
+  final void Function(int)? onTabChange;
+  const BottomNavBar({super.key, required this.onTabChange});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 0),
-      padding: const EdgeInsets.only(bottom: 20, top: 0),
+      padding: const EdgeInsets.only(bottom: 20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(15), // Adjust the radius value
-        // Add other decorations if needed, such as color or boxShadow
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withAlpha(127),
+            spreadRadius: 2,
+            blurRadius: 5,
+            offset: const Offset(0, 3),
+          ),
+        ],
       ),
       child: Consumer<CoffeeShop>(
         builder: (context, value, child) => GNav(
-          onTabChange: (value) => onTabChange!(value),
+          onTabChange: onTabChange,
           color: Colors.grey[400],
           mainAxisAlignment: MainAxisAlignment.center,
           activeColor: Colors.grey[700],
@@ -92,13 +109,14 @@ class BottomNavBar extends StatelessWidget {
           tabBorderRadius: 23,
           tabActiveBorder: Border.all(color: Colors.white),
           tabs: [
-            GButton(
+            const GButton(
               icon: Icons.home,
               text: "Shop",
             ),
             GButton(
               icon: Icons.shopping_bag_outlined,
-              text: "Cart (${value.userCart.length})", // Show the cart count
+              text:
+                  "Cart (${value.userCart.length} ${value.userCart.length == 1 ? 'item' : 'items'})",
             ),
           ],
         ),

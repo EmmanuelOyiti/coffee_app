@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:gihoc_mobile/auth/pages/login_page.dart';
-import 'package:gihoc_mobile/auth/pages/register_page.dart';
+import 'package:gihoc_mobile/auth/pages/login_page.dart' as login;
+import 'package:gihoc_mobile/auth/pages/register_page.dart' as register;
+
+
 
 class AuthPage extends StatefulWidget {
   const AuthPage({super.key});
@@ -10,10 +12,10 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  //show login page first
+  // Show Login by default
   bool showLoginPage = true;
 
-  void toggleScreens() {
+  void togglePages() {
     setState(() {
       showLoginPage = !showLoginPage;
     });
@@ -22,9 +24,9 @@ class _AuthPageState extends State<AuthPage> {
   @override
   Widget build(BuildContext context) {
     if (showLoginPage) {
-      return LoginPage(showRegisterPage: toggleScreens);
+      return login.LoginPage(showRegisterPage: togglePages);
     } else {
-      return RegisterPage(showLoginPage: toggleScreens);
+      return register.RegisterPage(showLoginPage: togglePages);
     }
   }
 }

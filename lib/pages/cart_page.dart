@@ -1,7 +1,6 @@
-import 'package:gihoc_mobile/checkout.dart';
 import 'package:flutter/material.dart';
-import 'package:gihoc_mobile/components/coffeeTiles.dart';
-import 'package:gihoc_mobile/components/dimensions.dart';
+import 'package:gihoc_mobile/checkout.dart';
+import 'package:gihoc_mobile/components/coffee_tiles.dart';
 import 'package:gihoc_mobile/model/coffee.dart';
 import 'package:gihoc_mobile/model/coffee_shop.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +15,17 @@ class CartPage extends StatefulWidget {
 class _CartPageState extends State<CartPage> {
   void removeFromCart(Coffee coffee) {
     Provider.of<CoffeeShop>(context, listen: false).removeFromCart(coffee);
+  }
+
+  void payNow() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => CheckoutPage(
+          purchasedItems: Provider.of<CoffeeShop>(context, listen: false).userCart,
+        ),
+      ),
+    );
   }
 
   @override
@@ -46,7 +56,7 @@ class _CartPageState extends State<CartPage> {
               GestureDetector(
                 onTap: payNow,
                 child: Container(
-                  margin: EdgeInsets.only(top: 20, bottom: 0),
+                  margin: const EdgeInsets.only(top: 20, bottom: 0),
                   padding: const EdgeInsets.all(15),
                   width: 150,
                   decoration: BoxDecoration(
@@ -65,16 +75,6 @@ class _CartPageState extends State<CartPage> {
           ),
         ),
       ),
-    );
-  }
-
-  void payNow() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => CheckoutPage(
-              purchasedItems:
-                  Provider.of<CoffeeShop>(context, listen: false).userCart)),
     );
   }
 }

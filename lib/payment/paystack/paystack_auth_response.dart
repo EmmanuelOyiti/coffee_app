@@ -1,27 +1,27 @@
 class PaystackAuthResponse {
-  final String authorization_url;
-  final String access_code;
+  final String authorizationUrl;
+  final String accessCode;
   final String reference;
 
-  PaystackAuthResponse(
-      {required this.authorization_url,
-      required this.access_code,
-      required this.reference});
+  PaystackAuthResponse({
+    required this.authorizationUrl,
+    required this.accessCode,
+    required this.reference,
+  });
 
   factory PaystackAuthResponse.fromJson(Map<String, dynamic> json) {
     return PaystackAuthResponse(
-        authorization_url: json["authorization_url"],
-        reference: json["reference"],
-        access_code: json["access_code"]);
-  
+      authorizationUrl: json["authorization_url"],
+      accessCode: json["access_code"],
+      reference: json["reference"],
+    );
   }
 
   Map<String, dynamic> toJson() {
-    return{
-      "authorization_url": authorization_url,
-        "reference": reference,
-        'access_code': access_code,
+    return {
+      "authorization_url": authorizationUrl,
+      "access_code": accessCode,
+      "reference": reference,
     };
-        
-}
+  }
 }
